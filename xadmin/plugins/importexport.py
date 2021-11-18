@@ -45,7 +45,9 @@ from xadmin.sites import site
 from xadmin.views import BaseAdminPlugin, ListAdminView, ModelAdminView
 from xadmin.views.base import csrf_protect_m, filter_hook
 from django.db import transaction
-from import_export.admin import DEFAULT_FORMATS, SKIP_ADMIN_LOG, TMP_STORAGE_CLASS
+from import_export.admin import ImportMixin,ImportExportMixinBase
+# from import_export.admin import  SKIP_ADMIN_LOG, TMP_STORAGE_CLASS
+from import_export.formats.base_formats import DEFAULT_FORMATS
 from import_export.resources import modelresource_factory
 from import_export.forms import (
     ImportForm,
@@ -106,13 +108,13 @@ class ImportBaseView(ModelAdminView):
 
     def get_skip_admin_log(self):
         if self.skip_admin_log is None:
-            return SKIP_ADMIN_LOG
+            return ImportMixin(ImportExportMixinBase).get_skip_admin_log()
         else:
             return self.skip_admin_log
 
     def get_tmp_storage_class(self):
         if self.tmp_storage_class is None:
-            return TMP_STORAGE_CLASS
+            return ImportMixin(ImportExportMixinBase).get_tmp_storage_class()
         else:
             return self.tmp_storage_class
 

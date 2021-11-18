@@ -9,10 +9,10 @@ try:
     from formtools.wizard.views import StepsHelper
 except:
     # work for django<1.8
-    from django.contrib.formtools.wizard.storage import get_storage
-    from django.contrib.formtools.wizard.forms import ManagementForm
-    from django.contrib.formtools.wizard.views import StepsHelper
-
+    # from django.contrib.formtools.wizard.storage import get_storage
+    # from django.contrib.formtools.wizard.forms import ManagementForm
+    # from django.contrib.formtools.wizard.views import StepsHelper
+    pass
 from django.utils.encoding import smart_text
 from django.utils.module_loading import import_string
 from django.forms import ValidationError
